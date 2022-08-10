@@ -1,0 +1,32 @@
+ <!--
+
+ <div class="container">
+  <ul>
+      <% @restaurants.each do |restaurant| %>
+      <li>
+       <%= link_to restaurant.name, restaurant_path(restaurant) %>
+        <%= restaurant.name %>
+        <%= restaurant.address %>
+        <%= restaurant.category %>
+        <%= restaurant.phone_number %>
+        <% end %>
+      </li>
+    </ul>
+  <%# <%= link_to "ADD A NEW ARTICLE", new_article_path %>
+ </div>
+
+ -->
+
+ <div class="container">
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <h1>Restaurants</h1>
+    <%= link_to new_restaurant_path do %>
+      <i class="fas fa-plus-square btn-light"></i>
+    <% end %>
+  </div>
+  <div class="cards mb-5">
+    <% @restaurants.each do |restaurant| %>
+      <%= render 'restaurants/card', restaurant: restaurant %>
+    <% end %>
+  </div>
+</div>
