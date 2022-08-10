@@ -1,20 +1,36 @@
- <div class="container">
-  <ul>
-      <li>
-        <%= @restaurant.name %>
-        <%= @restaurant.address %>
-        <%= @restaurant.category %>
-        <%= @restaurant.phone_number %>
-      </li>
+ <div class="container ">
 
-      <p><strong>Reviews</strong></p>
-      <ul class="list-group">
-      <% @restaurant.reviews.each do |review| %>
-      <li class="list-group-item"><%= review.content %></li>
+<div class="d-flex justify-content-center align-items-center mt-3">
+       <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-infos d-flex">
+              <div>
+                <h2><%= @restaurant.name %></h2>
+                <p><%= @restaurant.address %></p>
+                <p><%= @restaurant.category %></p>
+                <p><%= @restaurant.phone_number %></p>
+              </div>
+              <div>
+                <%= link_to "Add review", new_restaurant_review_path(params[:id]), class: "d-flex justify-content-center align-items-center btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+     </div>
+
+     <div class="d-flex justify-content-center ">
+      <ul class="list-group mt-3">
+        <% @restaurant.reviews.each do |review| %>
+        <li class="card shadow-sm p-3 mb-3 bg-body rounded" style="width: 18rem;">
+          <%= review.content %>
+          <div class="d-flex">
+          <% review.rating.times do %>
+          <i class="fas fa-star"></i>
+          <% end %>
+          <% (5 - review.rating).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        </li>
       <% end %>
-      </ul>
-<br>
-
     </ul>
-     <%= link_to "ADD A NEW REVIEW", new_restaurant_review_path(params[:id]) %>
+    </div>
  </div>
